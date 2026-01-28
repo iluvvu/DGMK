@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import ImageSlider from "@/components/ImageSlider";
 
 function formatPrice(price: number) {
   return price.toLocaleString("ko-KR") + "원";
@@ -72,45 +73,7 @@ export default async function ProductDetailPage({
   return (
     <div className="max-w-2xl mx-auto">
       {/* 이미지 슬라이더 */}
-      <div className="aspect-square bg-gray-200 relative overflow-hidden">
-        {images && images.length > 0 ? (
-          <img
-            src={images[0].image_url}
-            alt={product.title}
-            className="w-full h-full object-cover"
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center text-gray-400">
-            <svg
-              className="w-20 h-20"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
-          </div>
-        )}
-
-        {/* 이미지 인디케이터 */}
-        {images && images.length > 1 && (
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5">
-            {images.map((_: unknown, index: number) => (
-              <div
-                key={index}
-                className={`w-2 h-2 rounded-full ${
-                  index === 0 ? "bg-white" : "bg-white/50"
-                }`}
-              />
-            ))}
-          </div>
-        )}
-      </div>
+      <ImageSlider images={images || []} alt={product.title} />
 
       <div className="px-4 py-6">
         {/* 판매자 정보 */}
