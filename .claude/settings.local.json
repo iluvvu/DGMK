@@ -4,7 +4,9 @@
       "Bash(npx create-next-app@latest:*)",
       "Bash(npm run build:*)",
       "mcp__supabase__apply_migration",
-      "Bash(timeout:*)"
+      "Bash(timeout:*)",
+      "WebFetch(domain:dgmk.vercel.app)",
+      "WebFetch(domain:dgmk-git-master-iluvvus-projects.vercel.app)"
     ]
   },
   "enableAllProjectMcpServers": true,
